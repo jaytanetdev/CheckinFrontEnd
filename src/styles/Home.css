@@ -1,0 +1,326 @@
+.container-homepage {
+    display: flex;
+}
+
+.background-container-home {
+
+    background-image: url('../../public/img/background.jpg');
+    height: 100vh;
+    background-size: cover;
+}
+
+.div-homepage {
+    flex: 1;
+    /* ให้แต่ละ div มีขนาดเท่ากัน */
+    justify-content: center;
+    align-items: center;
+    /* จัดให้อยู่ตรงกลางในแนวตั้ง */
+    margin: 5px;
+    /* ปรับระยะห่างของแต่ละ div */
+    border: 0.1px solid #ccc;
+    /* เพิ่มเส้นขอบสีเทา */
+    padding: 10px;
+    /* เพิ่มระยะห่างภายใน div */
+
+}
+
+.img-advert {
+    width: 100%;
+    object-fit: contain;
+    height: 100% !important;
+}
+
+.btn-checkin {
+    width: 100% !important;
+    height: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.btn-checkout {
+    width: 100% !important;
+    height: 100%;
+    font-size: 16px;
+}
+
+
+.btn-chekinOutOffice {
+    width: 100% !important;
+    height: 100%;
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.btn-dashboard {
+    width: 100% !important;
+    height: 100%;
+    font-size: 16px;
+}
+
+
+
+.div-btn-checkinout {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
+}
+
+.div-btn-chekinOutOffice {
+    display: flex;
+    justify-content: center;
+
+}
+
+.btn-checkin {
+    font-size: 18px;
+    width: 220px;
+    height: 100px;
+    margin-right: 15px;
+    background-color: #00897b;
+    /* background-image: linear-gradient(to right, #0bf403, #52e752); */
+    font-family: 'TH Sarabun', sans-serif; /* เลือกฟอนต์ TH Sarabun  */
+    border-radius: 0.6rem;
+    box-shadow: 0px 4px 8px rgba(25, 25, 25, 25);
+    /* เพิ่ม shadow */
+}
+
+.btn-checkin:hover {
+    background-color: #56ee51 !important;
+    /* เปลี่ยนสีเมื่อโฮเวอร์ */
+}
+
+.btn-checkout {
+    font-size: 18px;
+    width: 220px;
+    height: 100px;
+    font-family: 'TH Sarabun', sans-serif; /* เลือกฟอนต์ TH Sarabun  */
+    background-color: #b0120a;
+    /* background-image: linear-gradient(to right, #f31a1a, #fc0000); */
+    border-radius: 0.6rem;
+    box-shadow: 0px 4px 8px rgba(25, 25, 25, 25);
+    /* เพิ่ม shadow */
+}
+
+.btn-checkout:hover {
+    background-color: rgb(239, 78, 78) !important;
+    /* เปลี่ยนสีเมื่อโฮเวอร์ */
+}
+
+.btn-chekinOutOffice {
+    font-size: 18px;
+    width: 220px;
+    height: 100px;
+    margin-right: 15px;
+    background-color: #ffc107;
+    font-family: 'TH Sarabun', sans-serif; /* เลือกฟอนต์ TH Sarabun  */
+    border-radius: 0.6rem;
+    box-shadow: 0px 4px 8px rgba(25, 25, 25, 25);
+}
+
+.btn-chekinOutOffice:hover {
+    background-color: #ef844e !important;
+    /* เปลี่ยนสีเมื่อโฮเวอร์ */
+}
+
+.btn-dashboard {
+    font-size: 18px;
+    width: 220px;
+    height: 100px;
+    font-family: 'TH Sarabun', sans-serif; /* เลือกฟอนต์ TH Sarabun  */
+    background-color: #003399;
+    /* background-image: linear-gradient(to right, #005ef6, #00a2ff); */
+    border-radius: 0.6rem;
+    box-shadow: 0px 4px 8px rgba(25, 25, 25, 25);
+}
+
+.google-map {
+    margin: 20px 20px 0 0;
+    width: 100%;
+    height: 350px !important;
+}
+
+@media (max-width:1526px) {
+    .container-homepage {
+        display: grid;
+    }
+
+    .img-advert {
+        width: 100%;
+        height: 420px !important;
+        ;
+        object-fit: contain;
+    }
+
+    .btn-checkin {
+        width: 300px !important;
+        height: 110px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .btn-checkout {
+        width: 300px !important;
+        height: 110px;
+        font-size: 16px;
+    }
+
+    .btn-chekinOutOffice {
+        width: 300px !important;
+        height: 110px;
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .btn-dashboard {
+        width: 300px !important;
+        height: 110px;
+        font-size: 16px;
+    }
+
+    .google-map {
+
+        height: 220px !important;
+    }
+}
+
+@media (max-width:770px) {
+    .div-advert .carousel .slider-wrapper .slider .slide img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .img-advert {
+        height: 220px !important;
+    }
+
+    .btn-checkin {
+        width: 180px !important;
+        height: 100px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .btn-checkout {
+        width: 180px !important;
+        height: 100px;
+        font-size: 16px;
+    }
+
+    .btn-chekinOutOffice {
+        width: 180px !important;
+        height: 100px;
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .btn-dashboard {
+        width: 180px !important;
+        height: 100px;
+        font-size: 16px;
+    }
+}
+
+
+
+
+@media (max-width:551px) {
+    .google-map {
+        width: 100%;
+        height: 200px;
+    }
+
+    .div-btn-checkinout {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    .div-btn-chekinOutOffice {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    .btn-checkin {
+        width: 180px !important;
+        height: 100px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .btn-checkout {
+        width: 180px !important;
+        height: 100px;
+        font-size: 16px;
+    }
+
+
+
+    .btn-chekinOutOffice {
+        width: 180px !important;
+        height: 100px;
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .btn-dashboard {
+        width: 180px !important;
+        height: 100px;
+        font-size: 16px;
+    }
+
+
+}
+
+
+
+@media (max-width:405px) {
+    .div-btn-checkinout {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    .btn-checkin {
+
+
+        width: 150px !important;
+        margin-bottom: 10px !important;
+        height: 100px
+    }
+
+    .btn-checkout {
+
+        width: 150px !important;
+        height: 100px
+    }
+
+    .div-btn-chekinOutOffice {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    .btn-chekinOutOffice {
+
+        width: 150px !important;
+        margin-bottom: 10px;
+        height: 100px
+    }
+
+    .btn-dashboard {
+
+        width: 150px !important;
+        height: 100px
+    }
+
+    .google-map {
+        width: 100%;
+        height: 200px;
+    }
+}

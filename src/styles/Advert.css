@@ -1,0 +1,104 @@
+.advert-datepicker {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 30px 15px 30px;
+
+}
+
+.btn-add-advert {
+    margin-left: 10px;
+    background-color: #259b24;
+    width: 200px;
+}
+
+.btn-search-advert {
+    margin-left: 10px;
+    background-color: #283593;
+}
+
+.modal-advert-datepicker {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fontawesome-faplus {
+    display: none;
+}
+
+.label-add-advert {
+    display: inline;
+}
+
+@media (max-width:655px) {
+    .advert-datepicker {
+        display: grid;
+    }
+
+    .div-btn-add-advert {
+        margin-bottom: 20px;
+        margin-left: -10px;
+    }
+}
+
+@media (max-width:442px) {
+    .advert-datepicker {
+        display: grid;
+        margin-left: 50px;
+    }
+
+    .fontawesome-faplus {
+        display: inline;
+    }
+
+    .label-add-advert {
+        display: none;
+    }
+
+    .div-btn-add-advert {
+        margin-left: auto;
+    }
+
+    .btn-add-advert {
+
+        width: auto;
+    }
+
+    .div-search-advert {
+        display: none;
+    }
+
+
+    .btn-search-advert {
+        margin: 15px 30px 15px 0px;
+        width: 100%;
+    }
+
+    .datepicker-startDate-advert-search {
+        width: auto;
+        margin-bottom: 15px;
+    }
+
+    .datepicker-endDate-advert-search {
+        width: auto;
+    }
+
+
+}
+@media (max-width:410px) {
+    .advert-datepicker {
+        display: grid;
+        margin-left: 50px;
+    }
+    .label-between{
+        display: none;
+    }
+    .datepicker-startDate-advert-search {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .datepicker-endDate-advert-search {
+        width: 100%;
+    }
+ 
+}

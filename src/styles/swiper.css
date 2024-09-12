@@ -1,0 +1,62 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.modal-Swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.modal-swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+
+.modal-swiper-slide-img {
+    display: block;
+    width: 100%;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 10px; /* ปรับตำแหน่งของข้อความ */
+    left: 10px; /* ปรับตำแหน่งของข้อความ */
+    color: white; /* เปลี่ยนสีข้อความเป็นสีขาวหรือสีที่ต้องการ */
+    font-size: 18px; /* ปรับขนาดตัวอักษร */
+    background-color: rgba(0, 0, 0, 0.5); /* เพิ่มพื้นหลังสีของข้อความ */
+    padding: 5px 10px; /* ปรับระยะห่างของข้อความ */
+    border-radius: 5px; /* เพิ่มมุมขอบของข้อความ */
+}
+
+@media (max-width:431px) {
+    .modal-swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 270px;
+        height:200px;
+        
+    }
+}
