@@ -29,8 +29,8 @@ function HomePage() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [arrayAdvert, setArrayAdvert] = useState([]);
-  const targetLatitude = 13.664389961604185;
-  const targetLongitude = 100.4471323290208;
+  const [titleCheckin, setTitleCheckin] = useState("");
+
 
 
   const dateNow = new Date();
@@ -44,8 +44,10 @@ function HomePage() {
   const fetchData = async () => {
 
     try {
-      setLatitude(targetLatitude);
-      setLongitude(targetLongitude)
+      const positionCheckin = await callApi("get", "/api/getLocationCheckin", {});
+      setTitleCheckin(positionCheckin[0].lo_title)
+      setLatitude(positionCheckin[0].lo_latitude);
+      setLongitude(positionCheckin[0].lo_longitude)
       window.scrollTo(0, 0);
       const responseCheckDate = await callApi("get", "/api/checkDateAttendance", { userId: userId, dateATD: format(dateNow, 'yyyy-MM-dd') })
       if (responseCheckDate.length > 0 && responseCheckDate[0].atd_time_checkin) {
@@ -102,7 +104,7 @@ function HomePage() {
   const handleRecordLocation = async (type, title, detail) => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude: currentLatitude, longitude: currentLongitude } = position.coords;
-      const distance = calculateDistance(currentLatitude, currentLongitude, targetLatitude, targetLongitude);
+      const distance = calculateDistance(currentLatitude, currentLongitude, latitude, longitude);
 
       const responseCheckDate = await callApi("get", "/api/checkDateAttendance", { userId: userId, dateATD: format(dateNow, 'yyyy-MM-dd') })
 
@@ -128,7 +130,7 @@ function HomePage() {
           latitude: currentLatitude,
           longitude: currentLongitude,
           typeCheckin: type === 'checkin' ? '0' : type === 'checkinOffSite' ? '1' : '',
-          locationCheckin: type === 'checkin' ? 'JTL' : type === 'checkinOffSite' ? title : ''
+          locationCheckin: type === 'checkin' ? titleCheckin : type === 'checkinOffSite' ? title : ''
         };
         if (type === "checkin") {
           data.timeCheckIn = format(dateNow, 'HH:mm:ss');
@@ -139,7 +141,7 @@ function HomePage() {
         } else {
           data.timeCheckOut = format(dateNow, 'HH:mm:ss');
         }
-        if (distance <= 5000000) {
+        if (distance <= 1000 || type === 'checkinOffSite') {
           callApi("post", "/api/insAttendance", data)
             .then(data => {
               showToast("success", type === "checkin" || type === 'checkinOffSite' ? "เช็คอินสำเร็จ" : "เช็คเอ้าสำเร็จ");
@@ -240,15 +242,15 @@ function HomePage() {
                   type="primary"
                   onClick={() => { handleRecordLocation("checkin") }}
                   disabled={disableCheckIn ? true : false}   >
-                  <div><img src='/img/checkin.png' alt="travel" style={{ width: "50px",color:"white"  }} /></div>
-                  <label style={{ color: "white" }}>เช็คอิน JTL</label>
+                  <div><img src='/img/checkin.png' alt="travel" style={{ width: "50px", color: "white" }} /></div>
+                  <label style={{ color: "white" }}>เช็คอิน {titleCheckin}</label>
                 </Button>
 
                 <Button
                   className="btn-checkout"
                   type="primary"
                   onClick={() => { handleRecordLocation("checkout") }}>
-                  <div><img src='/img/exit.png' alt="travel" style={{ width: "50px",  }} /></div>
+                  <div><img src='/img/exit.png' alt="travel" style={{ width: "50px", }} /></div>
                   เช็คเอ้า
                 </Button>
               </div>
@@ -262,7 +264,7 @@ function HomePage() {
                   disabled={disableCheckIn ? true : false}
                 >
                   <div><img src='/img/travel.png' alt="travel" style={{ width: "70px", marginBottom: "-20px" }} /></div>
-                  เช็คอิน นอกสถานที่
+                  <label style={{ color: "white" }}>เช็คอิน นอกสถานที่</label>
                 </Button>
 
 
@@ -270,7 +272,7 @@ function HomePage() {
                   className="btn-dashboard"
                   type="primary"
                   onClick={() => { Navigate('/Dashboard'); }}>
-                  <div><img src='/img/paper.png' alt="travel" style={{ width: "40px"}} /></div>
+                  <div><img src='/img/paper.png' alt="travel" style={{ width: "40px" }} /></div>
                   ดูประวัติเช็คอิน
                 </Button>
               </div>
@@ -282,7 +284,7 @@ function HomePage() {
           <div className="div-homepage" >
             {latitude && longitude && (
               <center>
-                <label style={{ fontSize: "18px", color: "white" }}>สถานที่บริษัท JTL</label>
+                <label style={{ fontSize: "18px", color: "white" }}>สถานที่บริษัท {titleCheckin}</label>
                 <iframe
                   className="google-map"
                   allowFullScreen

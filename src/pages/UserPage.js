@@ -9,6 +9,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import callApi from '../service/callApi';
 import { format } from 'date-fns';
 import { EditOutlined } from '@ant-design/icons';
+import Swal from "sweetalert2";
 
 function UserPage() {
     const userId = localStorage.getItem('userId');
@@ -24,9 +25,9 @@ function UserPage() {
     const [selectedEndDate, setSelectedEndDate] = useState(null);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
-        return (() => {
+       
             fetchData();
-        })
+       
         //eslint-disable-next-line
     }, [userId]);
 
@@ -186,6 +187,21 @@ function UserPage() {
         }
         await callApi(metod, pathCallApi, dataCall)
 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: "success",
+            title: "บันทึกข้อมูลสำเร็จ"
+        });
 
         fetchData(selectedStartDate, selectedEndDate, currentPage)
 

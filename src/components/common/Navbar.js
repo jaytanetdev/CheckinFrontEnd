@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import "../../styles/Navbar.css"
 function Navbar() {
@@ -6,6 +6,7 @@ function Navbar() {
     const nameUser = localStorage.getItem('nameUser');
     const lastnameUser = localStorage.getItem('lastnameUser');
     const type = localStorage.getItem('type');
+
 
     return (
         <>
